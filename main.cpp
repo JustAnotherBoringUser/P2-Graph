@@ -117,14 +117,13 @@ void shortest() {
 
         int wybor;
 
-        ///*******************************|->menu wczytywania danych
             cout << "Wybierz opcje: \n1.Lista 2.Macierz \n";
             cin >> wybor;
           
         switch(wybor)
         {
-            case 1: { Lg.init(V,E,graf,false); Lg.BF(start,true); break;}
-            case 2: { Mg.init(V,E,graf,false); Mg.BF(start,true); break;}
+            case 1: { Lg.init(V,E,graf,false); Lg.print(); Lg.BF(start,true); break;}
+            case 2: { Mg.init(V,E,graf,false); Mg.print(); Mg.BF(start,true); break;}
             //case 3: break;
         }
 
@@ -153,14 +152,24 @@ void view_random(){ //odkomentować PRINT
 	
 	Matrix M;   
     List L;
-	int V, E; //double g; 
+	int V, E;
 	
-	cout<<"Podaj liczbe wierzcholkow i ...\n";
-	cin >> V;
-	E =(V*(V - 1))/2;
+	V = rand() % 40;
+	E = rand() % 40;
 	
-	M.random(V, E);
-    L.random(V, E);
+	        int wybor;
+
+        ///*******************************|->menu wczytywania danych
+            cout << "Wybierz opcje: \n1.Macierz 2.Lista \n";
+            cin >> wybor;
+          
+        switch(wybor)
+        {
+            case 1: { M.random(V, E); M.print(); break;}
+            case 2: { L.random(V, E); L.print(); break;}
+            //case 3: break;
+        }
+    
 }
 
 int main()
@@ -174,15 +183,16 @@ int main()
 
     while(ch!=3)
     {
-        ///*******************************|->menu wczytywania danych
-            cout << "Wybierz opcje: \n1. 100 instancji 2. problem najkrotszej sciezki 3.koniec\n";
+        
+            cout << "Wybierz opcje: \n1. 100 instancji 2. problem najkrotszej sciezki 3.losowy graf 4.koniec\n";
             cin >> ch;
           
         switch(ch)
         {
             case 1: test(setka); break;
             case 2: shortest(); break;
-            case 3: break;
+            case 3: view_random(); break;
+			case 4: break;
         }
     }
     
